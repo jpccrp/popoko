@@ -1,47 +1,46 @@
-# popoko
 
-**Popoko : Employee Attendance Tracking App**
+# **Popoko : Employee Attendance Tracking App**
 
-The Employee Attendance Tracking App is a web application designed to track and manage employee attendance. It provides an efficient and convenient way for employers to monitor employee attendance records and generate reports. This README file provides an overview of the app's features and the technologies used in its development.
+The Employee Attendance Tracking App is a web application designed to track and manage employee attendance. It provides an efficient and convenient way for employers to monitor employee attendance records and generate reports. This README file provides an overview of the app's features and the technologies used in its development.  
 
-This app will be hosted locally on a linux server.
-Employees will use some version of the following attendance rules:
+This app will be hosted locally on a linux server
+Employees will use some version of the following attendance rules:  
     8h00m : Arrival to the company (punchIn)
-    13h00 : Leave to have lunch (punchOutLunch)
+    13h00 : Leave to have lunch (punchOutLunch)  
     14h00 : Arrive from lunch (punchInLunch)
     17h00 : Leave to go home for the day (punchOut)
+  
+The 'punchOut' type action needs to be overwritable, because an employee can be out the door to leave, remember something he forgot (some task), come back to finish it and punchOut again.  
 
-The 'punchOut' type action needs to be overwritable, because an employee can be out the door to leave, remember something he forgot (some task), come back to finish it and punchOut again.
+The database model should include (at least) for the employee: firstName, lastName, email, password, department, isAdmin. 
+There needs to be concepts of Department Heads to determine who has access to extract attendance reports for which employees. 
 
-The database model should include (at least) for the employee: firstName, lastName, email, password, department, isAdmin
-There needs to be concepts of Department Heads to determine who has access to extract attendance reports for which employees
-
-
-Tech Stack
-
-The Employee Attendance Tracking App is built using the following technologies:
-
-JavaScript: The primary programming language used for developing the backend and frontend of the application.
-HTML: Used for creating the structure and content of the web pages.
-CSS: Used for styling the web pages and enhancing the user interface.
-Express.js: A fast and minimalist web application framework for building the server-side of the application. It enables handling HTTP requests, routing, and middleware management.
-JWT (JSON Web Tokens): Used for authentication and authorization purposes. JWT provides a secure way to transmit information between parties as a JSON object.
-Prisma ORM: An Object-Relational Mapping (ORM) library that simplifies database operations and provides a type-safe API for working with databases. Prisma supports multiple databases, and in this app, it is used with SQLite3.
-SQLite3: A lightweight, serverless database engine used for storing and managing the attendance data. SQLite3 is chosen for its simplicity and portability.
-XLSX: A library for reading and writing Excel files. It allows exporting attendance data to Excel format for further analysis or reporting.
-Node.js: A JavaScript runtime environment that allows executing JavaScript code outside a web browser. It provides a platform for building scalable and performant web applications.
-FileSaver: A library for saving files on the client-side. FileSaver is used to enable users to download the attendance data in Excel format.
-Bcrypt: .
-
----
-
-Usage
-
-Once the Employee Attendance Tracking App is up and running, you can perform the following actions:
-
-Administrators:
-Register: Administrators can can create an account by providing employee's details and creating a username and password.
-Modify: Administrators can can modify an account. They can also set an account to be active or inactive.
+  
+# Tech Stack
+  
+The Employee Attendance Tracking App is built using the following technologies:  
+  
+JavaScript: The primary programming language used for developing the backend and frontend of the application.  
+HTML: Used for creating the structure and content of the web pages.  
+CSS: Used for styling the web pages and enhancing the user interface.  
+Express.js: A fast and minimalist web application framework for building the server-side of the application. It enables handling HTTP requests, routing, and middleware management.  
+JWT (JSON Web Tokens): Used for authentication and authorization purposes. JWT provides a secure way to transmit information between parties as a JSON object.  
+Prisma ORM: An Object-Relational Mapping (ORM) library that simplifies database operations and provides a type-safe API for working with databases. Prisma supports multiple databases, and in this app, it is used with SQLite3.  
+SQLite3: A lightweight, serverless database engine used for storing and managing the attendance data. SQLite3 is chosen for its simplicity and portability.  
+XLSX: A library for reading and writing Excel files. It allows exporting attendance data to Excel format for further analysis or reporting.  
+Node.js: A JavaScript runtime environment that allows executing JavaScript code outside a web browser. It provides a platform for building scalable and performant web applications.  
+FileSaver: A library for saving files on the client-side. FileSaver is used to enable users to download the attendance data in Excel format.  
+Bcrypt: .  
+  
+---  
+  
+# Usage 
+  
+Once the Employee Attendance Tracking App is up and running, you can perform the following actions:  
+  
+Administrators:  
+Register: Administrators can can create an account by providing employee's details and creating a username and password.  
+Modify: Administrators can can modify an account. They can also set an account to be active or inactive.  
 Delete: Administrators can delete accounts.
 
 Users:
@@ -61,7 +60,7 @@ Punches: The app will automatically create empty records for a said date for an 
 ---
 
 
-Database model:
+# Database model:
 
 Note: Since sqlite3 doesn't allow for enums, we can handle the enum in the application logic instead. We can replace the PunchType enum with a String type in the AttendanceRecord model and validate the data in the application layer to make sure it conforms to the required values: "punchIn", "punchOutLunch", "punchInLunch", "punchOut".
 
@@ -118,3 +117,42 @@ model Exception {
   employee      Employee  @relation(fields: [employeeId], references: [id])
   employeeId    Int
 }
+
+
+# Installation
+
+Here are the steps to get the Employee Attendance Tracking App up and running:
+
+**Prerequisites**
+
+Before you can run the app, you will need to have a few tools installed:
+
+Node.js and npm: You can download these from https://nodejs.org/en/download/. Npm is distributed with Node.js, which means that when you download Node.js, you automatically get npm installed on your computer.
+SQLite3: Install SQLite3 from https://www.sqlite.org/download.html. Make sure to add SQLite3 to your PATH.
+Step 1: Clone the repository
+
+Clone the Employee Attendance Tracking App repository from GitHub to your local machine.
+
+
+git clone https://github.com/your-username/popoko.git
+Step 2: Install dependencies
+
+Navigate to the project directory and install the required dependencies.
+
+cd popoko
+npm install
+This will install all the dependencies listed in the package.json file.
+
+Step 3: Set up the SQLite database
+
+The application uses SQLite for database operations. Run the following command to create the SQLite database:
+
+npx prisma migrate dev --name init
+This command will create the SQLite database based on the Prisma schema.
+
+Step 4: Start the application
+
+You can start the application by running the following command:
+
+npm start
+This command will start the server, and the application will be accessible at http://localhost:3000.
