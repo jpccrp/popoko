@@ -74,49 +74,50 @@ generator client {
 }
 
 model Employee {
-  id            Int      @id @default(autoincrement())
-  firstName     String
-  lastName      String
-  email         String   @unique
-  password      String
-  department    Department @relation(fields: [departmentId], references: [id])
-  departmentId  Int
-  isAdmin       Boolean
+  id                Int                 @id @default(autoincrement())
+  firstName         String
+  lastName          String
+  email             String              @unique
+  password          String
+  isAdmin           Boolean
+  departments       Department[]        @relation("EmployeeToDepartment")
+  departmentHeads   DepartmentHead[]    // this field represents departments the employee is heading
   attendanceRecords AttendanceRecord[]
-  exceptions    Exception[]
+  exceptions        Exception[]
 }
 
 model Department {
-  id            Int        @id @default(autoincrement())
-  name          String     @unique
-  employees     Employee[]
-  departmentHeads DepartmentHead[]
+  id                Int                  @id @default(autoincrement())
+  name              String               @unique
+  employees         Employee[]           @relation("EmployeeToDepartment")
+  departmentHeads   DepartmentHead[]     // this field represents the head(s) of the department
 }
 
 model DepartmentHead {
-  id            Int       @id @default(autoincrement())
-  employee      Employee  @relation(fields: [employeeId], references: [id])
-  employeeId    Int
-  department    Department @relation(fields: [departmentId], references: [id])
-  departmentId  Int
+  id               Int                  @id @default(autoincrement())
+  employee         Employee             @relation(fields: [employeeId], references: [id])
+  employeeId       Int
+  department       Department           @relation(fields: [departmentId], references: [id])
+  departmentId     Int
 }
 
 model AttendanceRecord {
-  id            Int       @id @default(autoincrement())
-  date          DateTime
-  punchType     String
-  timestamp     DateTime
-  employee      Employee  @relation(fields: [employeeId], references: [id])
-  employeeId    Int
+  id              Int                   @id @default(autoincrement())
+  date            DateTime
+  punchType       String
+  timestamp       DateTime
+  employee        Employee              @relation(fields: [employeeId], references: [id])
+  employeeId      Int
 }
 
 model Exception {
-  id            Int       @id @default(autoincrement())
-  date          DateTime
-  note          String
-  employee      Employee  @relation(fields: [employeeId], references: [id])
-  employeeId    Int
+  id              Int                  @id @default(autoincrement())
+  date            DateTime
+  note            String
+  employee        Employee             @relation(fields: [employeeId], references: [id])
+  employeeId      Int
 }
+
 
 
 # Installation
