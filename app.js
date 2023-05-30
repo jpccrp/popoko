@@ -1,3 +1,6 @@
+// This file contains the login route for the API. It uses the employee's email
+// and password to authenticate them and then returns a JWT token to the client.
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
@@ -5,6 +8,7 @@ const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 const { PrismaClient } = require("@prisma/client");
 const path = require("path");
+
 
 // Load environment variables from .env file
 dotenv.config();

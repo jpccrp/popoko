@@ -1,59 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trevo HRM app - Dashboard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMp9MvcKc" crossorigin="anonymous">
-  <link rel="stylesheet" href="dashboard.css">
+	<title>Trevo HRM App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">
-                <span data-feather="home"></span>
-                Dashboard
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="generate-reports">
-                <span data-feather="file-text"></span>
-                Gerar Relatórios
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="admin-panel">
-                <span data-feather="users"></span>
-                Painel Administrativo
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="logout">
-                <span data-feather="log-out"></span>
-                Terminar Sessão
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <h2>Assiduidade</h2>
-        <div class="btn-group" role="group" aria-label="Punch actions">
-          <button type="button" class="btn btn-primary" id="punchIn">Chegada</button>
-          <button type="button" class="btn btn-primary" id="punchOutLunch">Saida Almoço</button>
-          <button type="button" class="btn btn-primary" id="punchInLunch">Chegada Almoço</button>
-          <button type="button" class="btn btn-primary" id="punchOut">Saída</button>
-        </div>
-      </main>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <script src="dashboard.js"></script>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">Terminar Sessão</a></li>
+				<li><a href="reports.html">Relatórios</a></li>
+				<li><a href="admin.html">Painel de Administração</a></li>
+				<li><a href="https://www.gmail.com" target="_blank">Mail</a></li>
+				<li><a href="https://secure.trevoseguros.com" target="_blank">Anywhere</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1>Employee Attendance Tracking App</h1>
+		<div>
+			<button id="punchIn">Punch In</button>
+			<button id="punchOutLunch">Punch Out for Lunch</button>
+			<button id="punchInLunch">Punch In from Lunch</button>
+			<button id="punchOut">Punch Out</button>
+		</div>
+	</main>
 </body>
 </html>
