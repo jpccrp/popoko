@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 const { PrismaClient } = require("@prisma/client");
+const path = require("path");
 
 // Load environment variables from .env file
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.static("public"));
 
 const SECRET_KEY = process.env.JWT_SECRET;
 
+// Middleware to verify JWT token and add employee to request, login route
 app.post("/api/auth/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -36,3 +38,8 @@ app.post("/api/auth/login", async (req, res) => {
 // Add other routes and middleware here
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+//dashboard route
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+});

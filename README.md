@@ -64,6 +64,9 @@ Punches: The app will automatically create empty records for a said date for an 
 
 Note: Since sqlite3 doesn't allow for enums, we can handle the enum in the application logic instead. We can replace the PunchType enum with a String type in the AttendanceRecord model and validate the data in the application layer to make sure it conforms to the required values: "punchIn", "punchOutLunch", "punchInLunch", "punchOut".
 
+https://dbdiagram.io/d/6475c3f57764f72fcf168a3a
+
+
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
@@ -157,3 +160,10 @@ You can start the application by running the following command:
 
 npm start
 This command will start the server, and the application will be accessible at http://localhost:3000.
+
+# Utils
+
+https://dbdiagram.io/d
+
+https://notiz.dev/blog/prisma-dbml-generator
+
